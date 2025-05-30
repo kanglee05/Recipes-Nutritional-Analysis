@@ -1,2 +1,3 @@
 # Recipes Nutritional Analysis
-by Kang Lee
+
+by: Kang Lee, Jacob Kavanal
