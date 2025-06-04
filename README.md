@@ -20,7 +20,7 @@ After performing some analysis on the 'Avg Rating' column of our dataframe while
 
 Below is a graph displaying the proportion of missing values with respect to minutes.
 <iframe
-  src="Recipes-Nutritional-Analysis/plots/missingnessbyminutes.html"
+  src="plots/missingessbyminutes.html"
   width="800"
   height="600"
   frameborder="0"
