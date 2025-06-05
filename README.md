@@ -8,10 +8,11 @@ By: Kang Lee, Jacob Kavanal
 
 ### General Introduction
 
-Every recipes comes with various information such as its ingredients, steps, preparation time, and nutrition. Nutritional information for recipes comes in the form of calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates.
-Our project consists of two datasets: Recipes and Ratings from food.com. It was originally scraped and used by the authors of a recommender systems paper. Our datasets are only a subset of the raw data used in the original report since the original data is quite large.
+Every recipe comes with various information such as its ingredients, steps, preparation time, and nutrition. Nutritional information for recipes comes in the form of calories, total fat, sugar, sodium, protein, saturated fat, and carbohydrates. This information is often a good indicator of how healthy a recipe is. Recipes with a good amount protein, calories, and carbohydrates are generally healthy while ones with a lot of sodium, sugar, and saturated fat may cause weight gain or high blood pressure.
 
-The Recipes dataset has over 80,000 entries while the Ratings dataset has over 700,000 entries.
+Our project consists of two datasets: Recipes and Ratings from food.com. It was originally scraped and used by the authors of a recommender systems paper. Our datasets are only a subset of the raw data used in the original report since the original data is quite large. The Recipes dataset has over 80,000 entries while the Ratings dataset has over 700,000 entries.
+
+We left merged the two datasets and filled all ratings of 0 with `np.nan`.
 
 We chose to perform our analysis on 'Recipes and Ratings' a dataset containing 83782 recipes as well as thousands of ratings on these recipes. The 'recipes' dataframe contains a wide variety of data on recipes like 'nutrition', 'ingredients', 'steps', 'time submitted', 'tags', and 'avg rating.' The question we aimed to answer was **Can we predict calories only by training a regression model on the other nutritional values?** This question interested us as people who care about the nutritional value of the food we make and eat. We were also interested in seeing how accurate the calorie values of these recipes are across the dataset in relation to other nutritional values. To perform analysis on the nutritional values seperately, we split the nutrition column to 6 columns. These columns are 'total fat (PDV)', 'saturated fat (PDV)', 'sugar (PDV)', 'sodium (PDV)', 'protein (PDV)', 'carbohydrates (PDV).'
 
