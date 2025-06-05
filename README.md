@@ -148,7 +148,7 @@ Below is a boxplot displaying the distribution of protein in warm vs. cold month
 
 ## Framing a Prediction Problem
 
-After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple **regression** problem whose response variable is 'calorie'. We plan to use **Root Mean Squared Error** and **R<sup>2</sup>** for the following reasons:
+After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple **regression** problem whose response variable is 'calorie'. We chose calorie because the other nutritional values contribute to how calorie heavy a recipe may be. We plan to use **Root Mean Squared Error** and **R<sup>2</sup>** for the following reasons:
 
 1. RMSE directly measures prediction accuracy by penalizing larger errors more heavily, which is important when predicting nutritional values where significant deviations could be problematic.
 2.  R² indicates how well the other nutritional values explain the variance in calories, providing insight into the relationship's strength.
