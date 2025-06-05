@@ -75,12 +75,16 @@ We performed bivariate analysis on the protein value by season in the dataset.
 
 ### Interesting Aggregates
 
+Here are some interesting aggregates within the data set.
+
 | season   |   ('calories', '> 15 min') |   ('calories', '≤ 15 min') |   ('protein (PDV)', '> 15 min') |   ('protein (PDV)', '≤ 15 min') |   ('saturated fat (PDV)', '> 15 min') |   ('saturated fat (PDV)', '≤ 15 min') |   ('sugar (PDV)', '> 15 min') |   ('sugar (PDV)', '≤ 15 min') |
 |----------|----------------------------|----------------------------|---------------------------------|---------------------------------|---------------------------------------|---------------------------------------|-------------------------------|-------------------------------|
 | fall     |                    458.771 |                    342.442 |                         36.6461 |                         20.0693 |                               43.3604 |                               32.7707 |                       71.9366 |                       70.7868 |
 | spring   |                    459.792 |                    311.832 |                         37.513  |                         16.7925 |                               42.6439 |                               27.4961 |                       67.1847 |                       67.5114 |
 | summer   |                    457.501 |                    303.999 |                         36.0386 |                         16.0209 |                               42.831  |                               26.6185 |                       70.3264 |                       66.2658 |
 | winter   |                    459.121 |                    303.987 |                         37.7964 |                         17.1666 |                               44.1208 |                               27.1496 |                       66.8471 |                       68.4974 |
+
+We first groupby the season and calculated the mean for calories, protein, saturated fats, and sugar by recipes 15 minutes or less and recipes greater than 15 minutes. Recipes that took longer than 15 minutes showed a significantly greater amount of calories, protein, and saturated fats. However, there is a small difference for sugar amounts. There also isn't much of a difference for nutritional values when grouped by season. The only noticeable difference is the amount of calories for recipes 15 minutes or less in fall are greater than the other seasons.
 
 ## Assessment of Missingness
 
