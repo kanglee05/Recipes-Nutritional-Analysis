@@ -149,3 +149,19 @@ After cleaning/exploring the dataset and analyzing missingness, distributions, a
 1. MSE directly measures prediction accuracy by penalizing larger errors more heavily, which is important when predicting nutritional values where significant deviations could be problematic.
 2.  R² indicates how well the other nutritional values explain the variance in calories, providing insight into the relationship's strength.
 3. These metrics are more interpretable than alternatives like MAE or RMSE for nutrition prediction, as they relate directly to explained variance and error magnitude in calorie predictions.
+
+## Fairness Analysis
+
+Finally, we are going to assess if our model is fair among different recipes. The question we are trying to answer is: **Does our model perform worse for recipes 15 minutes or less than it does for recipes more than 15 minutes?** To answer this, we performed a permutation test and examined the resulting difference in **Root Mean Square Error (RMSE)** between the two recipe groups.
+
+Group `X` represents "quick recipes" or recipes that take 15 minutes or less to prepare and group `Y` represents "long recipes" or recipes that take more than 15 minutes to prepare. Our evaluation metric is Root Mean Square Error and the significance level is 0.05. 
+
+Our hypotheses are:
+
+**Null hypothesis**: Our model is fair. Its RMSE for quick recipes and longer recipes are roughly the same, and any differences are due to random chance.
+
+**Alternative hypothesis**: Our model is unfair. Its RMSE for quick recipes is lower than its R-squared score for longer recipes.
+
+**Test statistic**: difference in RMSE between recipes 15 minutes or less and recipes more than 15 minutes.
+
+After performing the permutation test, the resulting p-value we got is **0.072**, which is larger than our 0.05 significance level. Therefore, we **fail to reject** the null hypothesis. This suggests that our model predicts the calorie count for recipes from both groups with statistically similar RMSE. Therefore, our model seems to be fair, showing no bias towards quick recipes or long recipes.
