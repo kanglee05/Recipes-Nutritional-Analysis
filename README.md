@@ -14,9 +14,9 @@ TODO
 
 After performing some analysis on the 'Avg Rating' column of our dataframe while assessing missingness, we found that the average time taken for a recipe with a missing 'avg rating' was 228 minutes. Alternatively, the average time for a recipe for which 'avg rating' was NOT missing was 111 minutes. Seeing this difference, we performed a permutation test to assess whether 'avg rating' was really dependent on this column. 
 
-\nWe found, with a p-value of .04, that missingness of 'avg rating' was dependent on 'minutes' with an average observed difference of 117. With a threshold of .05, we can reject the null hypothesis that missingness is not dependent on minutes. This makes the 'avg_rating' column MAR. 
+We found, with a p-value of .04, that missingness of 'avg rating' was dependent on 'minutes' with an average observed difference of 117. With a threshold of .05, we can reject the null hypothesis that missingness is not dependent on minutes. This makes the 'avg_rating' column MAR. 
 
-\nWith a p-value of .1, we also found that missingness is likely not dependent on protein value. With a threshold of .05 again, we fail to reject the null hypothesis that missingess of 'avg rating' is not dependent on protein value. 
+With a p-value of .1, we also found that missingness is likely not dependent on protein value. With a threshold of .05 again, we fail to reject the null hypothesis that missingess of 'avg rating' is not dependent on protein value. 
 
 Below is a graph displaying the proportion of missing values with respect to minutes. We can see that missingess increases by a factor of 2 as recipes get longer.
 
@@ -45,4 +45,10 @@ Below is a boxplot displaying the distribution of protein in warm vs. cold month
   frameborder="0"
 ></iframe>
 
+# Framing a Prediction Problem
 
+After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple regression problem whose response variable is 'calorie'. We plan to use Mean Squared Error and R<sup>2</sup> for the following reasons:
+
+1. MSE directly measures prediction accuracy by penalizing larger errors more heavily, which is important when predicting nutritional values where significant deviations could be problematic.
+2.  R² indicates how well the other nutritional values explain the variance in calories, providing insight into the relationship's strength.
+3. These metrics are more interpretable than alternatives like MAE or RMSE for nutrition prediction, as they relate directly to explained variance and error magnitude in calorie predictions.
