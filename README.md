@@ -76,7 +76,7 @@ We performed univariate analysis on the calories in the dataset.
   frameborder="0"
 ></iframe>
 
-The histogram shows the 
+The histogram shows the distribution of calories is approximately normal, slightly skewed right. This suggests that the data is distributed in a way that is relatively balanced for recipes. Most recipes falls in the 500 calories or less distribution, however, there are outliers of recipes over 2000 or 3000 calories.
 
 ### Bivariate Analysis
 
@@ -88,6 +88,8 @@ We performed bivariate analysis on the calories vs protein values in the dataset
   height="600"
   frameborder="0"
 ></iframe>
+
+The scatterplot shows a clustering of points in the bottom left part of the graph. The scale of the graph is much bigger than the majority of the data it represents due to the outlier recipe that is greater than 40,000 calories and over 4,000 protein. Overall, there seems to be a relatively weak positive correlation between calories and protein, indicating that recipes with more calories do not necessarily mean more protein.
 
 ### Interesting Aggregates
 
