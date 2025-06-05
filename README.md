@@ -69,9 +69,25 @@ Below is the head of our cleaned Recipes dataframe.
 
 We performed univariate analysis on the calories in the dataset.
 
+<iframe
+  src="plots/caloriesdistribution.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The histogram shows the 
+
 ### Bivariate Analysis
 
-We performed bivariate analysis on the protein value by season in the dataset.
+We performed bivariate analysis on the calories vs protein values in the dataset.
+
+<iframe
+  src="plots/caloriesvsproteinscatter.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ### Interesting Aggregates
 
