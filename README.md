@@ -1,16 +1,22 @@
 # Recipes and Ratings Nutritional Statistical Analysis
 
+Recipes and Ratings Nutritional Statistical Analysis is a comprehensive data science project conducted at UCSD. The project consists of data wrangling, various analysis including EDA and hypothesis testing, creation of baseline and final models, and concluding with fairness analysis. The primary focus of the project is to investigate the nutritional values in recipes, seeing if they differ by factors such as season and preparation time, as well as to predict the calories count for recipes using the nutritional values.
 by: Kang Lee, Jacob Kavanal
 
-# Introduction
+## Introduction
 
+### General Introduction
 We chose to perform our analysis on 'Recipes and Ratings' a dataset containing 83782 recipes as well as thousands of ratings on these recipes. The 'recipes' dataframe contains a wide variety of data on recipes like 'nutrition', 'ingredients', 'steps', 'time submitted', 'tags', and 'avg rating.' The question we aimed to answer was: "Can we predict calories only by training a regression model on the other nutritional values?" This question interested us as people who care about the nutritional value of the food we make and eat. We were also interested in seeing how accurate the calorie values of these recipes are across the dataset in relation to other nutritional values. To perform analysis on the nutritional values seperately, we split the nutrition column to 6 columns. These columns are 'total fat (PDV)', 'saturated fat (PDV)', 'sugar (PDV)', 'sodium (PDV)', 'protein (PDV)', 'carbohydrates (PDV).'
 
-# Data Cleaning and Exploratory Data Analysis
+### Introduction of Columns
+
+
+
+## Data Cleaning and Exploratory Data Analysis
 
 TODO
 
-# Assessment of Missingness
+## Assessment of Missingness
 
 After performing some analysis on the 'Avg Rating' column of our dataframe while assessing missingness, we found that the average time taken for a recipe with a missing 'avg rating' was 228 minutes. Alternatively, the average time for a recipe for which 'avg rating' was NOT missing was 111 minutes. Seeing this difference, we performed a permutation test to assess whether 'avg rating' was really dependent on this column. 
 
@@ -27,7 +33,7 @@ Below is a graph displaying the proportion of missing values with respect to min
   frameborder="0"
 ></iframe>
 
-# Hypothesis Testing
+## Hypothesis Testing
 
 Hypotheses:
 - Null hypothesis: Protein values in recipes submitted during cold months are the same as recipes submitted in warm months.
@@ -45,7 +51,7 @@ Below is a boxplot displaying the distribution of protein in warm vs. cold month
   frameborder="0"
 ></iframe>
 
-# Framing a Prediction Problem
+## Framing a Prediction Problem
 
 After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple regression problem whose response variable is 'calorie'. We plan to use Mean Squared Error and R<sup>2</sup> for the following reasons:
 
