@@ -120,11 +120,21 @@ First, we performed the permutation test on `avg_rating` and `minutes`. With a p
 
 - **Alternative Hypothesis**: Distribution of `minutes` when `avg_rating` is missing is NOT the same as the distribution of `minutes` when `avg_rating` is not missing.
 
+|             |   count |    mean |     std |   min |   25% |   50% |   75% |             max |
+|-------------|---------|---------|---------|-------|-------|-------|-------|-----------------|
+| Not Missing |   81173 | 111.377 | 4020.67 |     0 |    20 |    35 |    60 |      1.0512e+06 |
+| Missing     |    2609 | 228.719 | 2913.68 |     1 |    25 |    45 |    75 | 129600          |
+
 The second permutation test that we are performing is on `avg_rating` and `calories`. The missingness of `avg_rating` does not depend on calories.
 
 - **Null Hypothesis**: Distribution of `calories` when `avg_rating` is missing is the same as the distribution of `calories` when `avg_rating` is not missing.
 
 - **Alternative Hypothesis**: Distribution of `calories` when `avg_rating` is missing is NOT the same as the distribution of `calories` when `avg_rating` is not missing.
+
+|             |   count |    mean |     std |   min |   25% |   50% |   75% |   max |
+|-------------|---------|---------|---------|-------|-------|-------|-------|-------|
+| Not Missing |   81173 | 33.0933 | 51.0052 |     0 |     6 |    18 |    49 |  4356 |
+| Missing     |    2609 | 34.3806 | 51.8847 |     0 |     7 |    17 |    47 |  1355 |
 
 ## Hypothesis Testing
 
