@@ -168,18 +168,20 @@ Since the p-value is greater than the 0.05 significance level, we fail to reject
 
 ## Hypothesis Testing
 
-Hypotheses:
-- Null hypothesis: Protein values in recipes submitted during cold months are the same as recipes submitted in warm months.
+For the hypothesis test, we aim to find if there is a significant difference in protein values for recipes submitted in cold months and warm months. This is important to find out if recipes submitted in winter months are greater in protein values since people may be trying to be healthier for their New Year's Resolution. There may also be more protein dense recipes uploaded during these months for the holidays. We chose this pair of hypotheses to test because of personal interest in this question as well as its applicability in helping us greater understand the ditributions of nutritional values in this dataset. 
 
-- Alternative hypothesis: Protein values in recipes submitted during cold months are different than recipes submitted during warm months.
+- **Null Hypothesis**: Protein values in recipes submitted during cold months are the same as recipes submitted in warm months.
 
-- Test statistic: Absolute difference between protein value averages of warm months and cold months.
+- **Alternative Hypothesis**: Protein values in recipes submitted during cold months are different than recipes submitted during warm months.
 
-- P-value Threshold: 0.05
+- **Test Statistic**: Absolute difference between protein value averages of warm months and cold months.
 
-We performed a permutation test to find the differences in the distributions of protein values in cold and warm months. Warm months were classified as March-September and cold months were all others. We found an observed difference of .3 grams and a p-value of .11. With our threshold of .05, we fail to reject the null hypothesis. We chose this pair of hypotheses to test because of personal interest in this question as well as its applicability in helping us greater understand the ditributions of nutritional values in this dataset. 
+- **Significance Level**: 0.05
+
+We performed a permutation test to find the differences in the distributions of protein values in cold and warm months. Warm months were classified as March-September and cold months were all others. We found an **observed difference** of 0.3 grams and a **p-value** of **0.11**. With our significance level of 0.05, we **fail to reject** the null hypothesis. This suggests that recipes uploaded in cold months have the same protein values as those uploaded in warm months. It leads us to consider that the time of year does not have a significant impact on the protein values in recipes.
 
 Below is a boxplot displaying the distribution of protein in warm vs. cold months. It highlights the lack of difference between the two seasons. 
+
 <iframe
   src="plots/proteinbyseason.html"
   width="800"
@@ -189,7 +191,7 @@ Below is a boxplot displaying the distribution of protein in warm vs. cold month
 
 ## Framing a Prediction Problem
 
-After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple **regression** problem whose response variable is 'calorie'. We chose calorie because the other nutritional values contribute to how calorie heavy a recipe may be. We plan to use **Root Mean Squared Error** and **R<sup>2</sup>** for the following reasons:
+After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple **regression** problem whose response variable is `calorie`. We will train our model based on the following nutritional values: `total fat (PDV)`, `saturated fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, and `carbonhydrates (PDV)`, We chose calorie because the other nutritional values contribute to how calorie heavy a recipe may be. We plan to use **Root Mean Squared Error** and **R<sup>2</sup>** for the following reasons:
 
 1. RMSE directly measures prediction accuracy by penalizing larger errors more heavily, which is important when predicting nutritional values where significant deviations could be problematic.
 2.  R² indicates how well the other nutritional values explain the variance in calories, providing insight into the relationship's strength.
