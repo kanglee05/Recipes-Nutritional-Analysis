@@ -178,7 +178,7 @@ For the hypothesis test, we aim to find if there is a significant difference in 
 
 - **Significance Level**: 0.05
 
-We performed a permutation test to find the differences in the distributions of protein values in cold and warm months. Warm months were classified as March-September and cold months were all others. We found an **observed difference** of 0.3 grams and a **p-value** of **0.11**. With our significance level of 0.05, we **fail to reject** the null hypothesis. This suggests that recipes uploaded in cold months have the same protein values as those uploaded in warm months. It leads us to consider that the time of year does not have a significant impact on the protein values in recipes.
+We performed a permutation test to find the differences in the distributions of protein values in cold and warm months. Warm months were classified as March-September and cold months were all others. We found an **observed difference** of 0.3 grams and a **p-value** of **0.11**. With our significance level of 0.05, we **fail to reject** the null hypothesis. This suggests that recipes uploaded in cold months have the same protein values as those uploaded in warm months. It leads us to consider that the time of year does not have a significant impact on the protein values in recipes uploaded.
 
 Below is a boxplot displaying the distribution of protein in warm vs. cold months. It highlights the lack of difference between the two seasons. 
 
