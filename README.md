@@ -112,20 +112,19 @@ In our data, we believe the `avg_rating` column is Not Missing at Random **(NMAR
 
 ### Missingness Dependency
 
-After performing some analysis on the `avg_rating` column of our dataframe while assessing missingness, we found that the average time taken for a recipe with a missing `avg_rating` was about 229 minutes. Alternatively, the average time for a recipe for which `avg_rating` was **NOT** missing was about 111 minutes. Seeing this difference, we performed a permutation test to assess whether the missingness of the `avg_rating` column depends on other column. The other two columns that we used are `
+In the part, we performed a permutation test to assess whether the missingness of the `avg_rating` column depends on other column. The other two columns that we used are `minutes` and `calories`. The p-value we chose for our permutations test was **0.05** and the test statistic is the absolute difference for missing and non-missing average ratings.
 
-We found, with a p-value of **0.04**, that missingness of `avg_rating` was dependent on `minutes` with an average observed difference of 117. With a threshold of **0.05**, we can reject the null hypothesis that missingness is not dependent on minutes. This makes the 'avg_rating' column MAR. 
+First, we performed the permutation test on `avg_rating` and `minutes`. With a p-value of **0.03**, we found that the missingness of `avg_rating` does depend on `minutes`.
 
-With a p-value of .1, we also found that missingness is likely not dependent on protein value. With a threshold of .05 again, we fail to reject the null hypothesis that missingess of 'avg rating' is not dependent on protein value. 
+- **Null Hypothesis**: Distribution of `minutes` when `avg_rating` is missing is the same as the distribution of `minutes` when `avg_rating` is not missing.
 
-Below is a graph displaying the proportion of missing values with respect to minutes. We can see that missingess increases by a factor of 2 as recipes get longer.
+- **Alternative Hypothesis**: Distribution of `minutes` when `avg_rating` is missing is NOT the same as the distribution of `minutes` when `avg_rating` is not missing.
 
-<iframe
-  src="plots/missingessbyminutes.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
+The second permutation test that we are performing is on `avg_rating` and `calories`. The missingness of `avg_rating` does not depend on calories.
+
+- **Null Hypothesis**: Distribution of `calories` when `avg_rating` is missing is the same as the distribution of `calories` when `avg_rating` is not missing.
+
+- **Alternative Hypothesis**: Distribution of `calories` when `avg_rating` is missing is NOT the same as the distribution of `calories` when `avg_rating` is not missing.
 
 ## Hypothesis Testing
 
