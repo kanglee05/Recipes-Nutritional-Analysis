@@ -191,15 +191,38 @@ Below is a boxplot displaying the distribution of protein in warm vs. cold month
 
 ## Framing a Prediction Problem
 
-After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple **regression** problem whose response variable is `calorie`. We will train our model based on the following nutritional values: `total fat (PDV)`, `saturated fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, and `carbonhydrates (PDV)`, We chose calorie because the other nutritional values contribute to how calorie heavy a recipe may be. We plan to use **Root Mean Squared Error** and **R<sup>2</sup>** for the following reasons:
+After cleaning/exploring the dataset and analyzing missingness, distributions, and more, we decided to aim to predict calorie value from other nutritional values. At the time of prediction, we will have all the data necessary to predict this value. This is a multiple **regression** problem whose response variable is `calorie`. We chose calorie because the other nutritional values largely contribute to how calorie-dense a recipe may be. We plan to use **Root Mean Squared Error** and **R<sup>2</sup>** for the following reasons:
 
 1. RMSE directly measures prediction accuracy by penalizing larger errors more heavily, which is important when predicting nutritional values where significant deviations could be problematic.
 2.  R² indicates how well the other nutritional values explain the variance in calories, providing insight into the relationship's strength.
-3. These metrics are more interpretable than alternatives like MAE for nutrition prediction, as they relate directly to explained variance and error magnitude in calorie predictions.
+3. These metrics are easier to interpret than MAE for nutrition prediction, as they relate directly to variance and size of error in calorie predictions.
 
 ## Baseline Model
 
+Our multiple regression model was trained with an 80-20 train-test split on the following columns: `total fat (PDV)`, `saturated fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, and `carbohydrates (PDV)`. All of these features are quantitative. No encoding was necessary after expanding the nutrition column into these features. The model achieved an **RMSE of 43.71 and an R<sup>2</sup> of .99** on the test data. This is a very high score for our baseline model, which can be explained by the nature of the relationship between calories and macronutrients. Macronutrients have set calorie counts that when added together create the total calorie count. In ML terms, each macronutrient has a weight in the real world when calculating calories. What we've done here is used linear regression to reverse engineer those weights quite accurately.
+
 ## Final Model
+ 
+In order to determine the best hyperparameters for our final model, we used `GridSearchCV` to find the most important qualitative features in our dataset. What we found was that `total fat (PDV)`, `carbohydrates (PDV)`, `protein (PDV)` were the most important micronutrients to determine calorie count. After that, `n_steps` was determined as the 4th most imporant feature, with `sodium (PDV)` and `minutes` being the 5th and 6th. 
+
+The first three are understandable given the nature of macronutrients. `saturated fat (PDV)` and `sugar (PDV)` were much lower on the list of importance, due to the fact that `saturated fat (PDV)` is included in total fat values and `sugar (PDV)` is simply a carbohydrate. These two columns likely introduced some level of multicolinearity to our model, so we eliminated them from our feature list. Sodium does not naturally add very many calories, but high sodium levels are likely correlated with high calorie foods, so we decided to use this in our final model as well. `n_steps` is likely important due to the fact that additional steps create opportunities to add more oil to a dish, which can highly contribute to calorie count. Additionally, `minutes` is a likely an important feature because increasing cook time can change the fat or sugar absorption of a dish. More time on the stove can mean much more oil or sugar can be absorbed into other ingredients, which greatly increases `calorie` count. 
+
+We also decided to convert macronutrients from PDV to grams using the FDA recommended daily value. While this likely will not change the accuracy of the model, we wanted to be able to view our macronutrient counts in a way that is more easily understood. Additionally, macronutrients in grams allows us to more easily interpret the coefficients of each feature. In other words, it gave us the ability to see if our model's weights matched the real calorie count that a gram of each macronutrient has. 
+
+After our analysis of the best features and our reformatting of macronutrients, our predictive columns were `total fat (g)`, `carbohydrates (g)`, `protein (g)`, `n_steps`, `sodium (g)`, and `minutes`. With these features, our model achieved an **RMSE of 43.54 and an R<sup>2</sup> of .99**. This is marginally improved from our baseline model, but by a small margin. This is likely because of the high baseline predictability of macronutrients for calorie count. Our coefficients for our main macronutrients were as follows: 
+
+| Macronutrient | Coefficient | Actual Calories per Gram |
+|---------------|-------------|-------------------------|
+| Total Fat (g) |      7.33   |            9           |
+| Carbohydrates (g) |     4.32    |          4         |
+| Protein (g) |        4.22       |          4         |
+| Sodium (g) |        -9.49e-02       |          0         |
+
+
+Our weights closely align with the actual calorie values of each macronutrient, implying high accuracy within each feature. `total fat (g)`'s weight is lower than its real value likely due to the fact that fat is used for cooking rather than as an ingredient and is typically not fully absorbed into the final dish. 
+
+We believe our model is improved due to our critical selection of macronutrients as well as our inclusion of non-nutrient values that can have an impact on final calorie count. (Reasons listed above)
+
 
 ## Fairness Analysis
 
