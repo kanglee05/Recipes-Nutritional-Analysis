@@ -108,11 +108,13 @@ We first groupby the season and calculated the mean for calories, protein, satur
 
 ### NMAR Analysis
 
+In our data, we believe the `avg_rating` column is Not Missing at Random **(NMAR)**. Looking at this column, we see that it is only missing for recipes that did not receive any ratings from users. Therefore, the chance of a rating being missing depends on the actual rating column itself. This is different from Missing at Random (MAR), where the missingness depends on other columns. Additional data that might help explain the missingness is data on user behavior. For example, a user cooked the recipe but did not leave a rating. This could potentially make the missingness depend on other columns, shifting the missingness mechanism from NMAR to MAR.
+
 ### Missingness Dependency
 
-After performing some analysis on the 'Avg Rating' column of our dataframe while assessing missingness, we found that the average time taken for a recipe with a missing 'avg rating' was 228 minutes. Alternatively, the average time for a recipe for which 'avg rating' was NOT missing was 111 minutes. Seeing this difference, we performed a permutation test to assess whether 'avg rating' was really dependent on this column. 
+After performing some analysis on the `avg_rating` column of our dataframe while assessing missingness, we found that the average time taken for a recipe with a missing `avg_rating` was about 229 minutes. Alternatively, the average time for a recipe for which `avg_rating` was **NOT** missing was about 111 minutes. Seeing this difference, we performed a permutation test to assess whether the missingness of the `avg_rating` column depends on other column. The other two columns that we used are `
 
-We found, with a p-value of .04, that missingness of 'avg rating' was dependent on 'minutes' with an average observed difference of 117. With a threshold of .05, we can reject the null hypothesis that missingness is not dependent on minutes. This makes the 'avg_rating' column MAR. 
+We found, with a p-value of **0.04**, that missingness of `avg_rating` was dependent on `minutes` with an average observed difference of 117. With a threshold of **0.05**, we can reject the null hypothesis that missingness is not dependent on minutes. This makes the 'avg_rating' column MAR. 
 
 With a p-value of .1, we also found that missingness is likely not dependent on protein value. With a threshold of .05 again, we fail to reject the null hypothesis that missingess of 'avg rating' is not dependent on protein value. 
 
