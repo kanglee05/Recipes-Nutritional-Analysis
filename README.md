@@ -112,29 +112,49 @@ In our data, we believe the `avg_rating` column is Not Missing at Random **(NMAR
 
 ### Missingness Dependency
 
-In the part, we performed a permutation test to assess whether the missingness of the `avg_rating` column depends on other column. The other two columns that we used are `minutes` and `calories`. The p-value we chose for our permutations test was **0.05** and the test statistic is the absolute difference for missing and non-missing average ratings.
+In the part, we performed a permutation test to assess whether the missingness of the `avg_rating` column depends on other column. The other two columns that we used are `minutes` and `protein (PDV)`. The significance level we chose for our permutations test was **0.05** and the test statistic is the absolute difference for missing and non-missing values.
 
-First, we performed the permutation test on `avg_rating` and `minutes`. With a p-value of **0.03**, we found that the missingness of `avg_rating` does depend on `minutes`.
+First, we performed the permutation test on `avg_rating` and `minutes`. We found that the missingness of `avg_rating` does depend on `minutes`.
 
 - **Null Hypothesis**: Distribution of `minutes` when `avg_rating` is missing is the same as the distribution of `minutes` when `avg_rating` is not missing.
 
 - **Alternative Hypothesis**: Distribution of `minutes` when `avg_rating` is missing is NOT the same as the distribution of `minutes` when `avg_rating` is not missing.
+
+Below is the summary statistics for the observed distribution of `minutes` when `avg_rating` is missing and not missing.
 
 |             |   count |    mean |     std |   min |   25% |   50% |   75% |             max |
 |-------------|---------|---------|---------|-------|-------|-------|-------|-----------------|
 | Not Missing |   81173 | 111.377 | 4020.67 |     0 |    20 |    35 |    60 |      1.0512e+06 |
 | Missing     |    2609 | 228.719 | 2913.68 |     1 |    25 |    45 |    75 | 129600          |
 
-The second permutation test that we are performing is on `avg_rating` and `calories`. The missingness of `avg_rating` does not depend on calories.
+After performing the permutation test, we found the **observed statistic** to be 117.34 and the **p-value** to be 0.044.
 
-- **Null Hypothesis**: Distribution of `calories` when `avg_rating` is missing is the same as the distribution of `calories` when `avg_rating` is not missing.
+The plot below shows the empirical distribution of absolute difference of minutes for missing and non-missing average ratings.
 
-- **Alternative Hypothesis**: Distribution of `calories` when `avg_rating` is missing is NOT the same as the distribution of `calories` when `avg_rating` is not missing.
+
+
+Since the p-value is less than the 0.05 significance level, we reject the null hypothesis. Thus, the missingness of `avg_rating` depends on `minutes`.
+
+The second permutation test that we are performing is on `avg_rating` and `protein (PDV)`. The missingness of `avg_rating` does not depend on protein.
+
+- **Null Hypothesis**: Distribution of `protein (PDV)` when `avg_rating` is missing is the same as the distribution of `protein (PDV)` when `avg_rating` is not missing.
+
+- **Alternative Hypothesis**: Distribution of `protein (PDV)` when `avg_rating` is missing is NOT the same as the distribution of `protein (PDV)` when `avg_rating` is not missing.
+
+Below is the summary statistics for the observed distribution of `protein (PDV)` when `avg_rating` is missing and not missing.
 
 |             |   count |    mean |     std |   min |   25% |   50% |   75% |   max |
 |-------------|---------|---------|---------|-------|-------|-------|-------|-------|
 | Not Missing |   81173 | 33.0933 | 51.0052 |     0 |     6 |    18 |    49 |  4356 |
 | Missing     |    2609 | 34.3806 | 51.8847 |     0 |     7 |    17 |    47 |  1355 |
+
+After performing the permutation test, we found the **observed statistic** to be 1.29 and the **p-value** to be 0.2158. 
+
+The plot below shows the empirical distribution of absolute difference of protein for missing and non-missing average ratings.
+
+
+
+Since the p-value is greater than the 0.05 significance level, we fail to reject the null hypothesis. Thus, the missingness of `avg_rating` does not depend on `protein (PDV)`.
 
 ## Hypothesis Testing
 
