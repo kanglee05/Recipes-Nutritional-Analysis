@@ -131,7 +131,12 @@ After performing the permutation test, we found the **observed statistic** to be
 
 The plot below shows the empirical distribution of absolute difference of minutes for missing and non-missing average ratings.
 
-
+<iframe
+  src="plots/emp_dis_mins.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Since the p-value is less than the 0.05 significance level, we reject the null hypothesis. Thus, the missingness of `avg_rating` depends on `minutes`.
 
@@ -152,7 +157,12 @@ After performing the permutation test, we found the **observed statistic** to be
 
 The plot below shows the empirical distribution of absolute difference of protein for missing and non-missing average ratings.
 
-
+<iframe
+  src="plots/emp_dis_protein.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 Since the p-value is greater than the 0.05 significance level, we fail to reject the null hypothesis. Thus, the missingness of `avg_rating` does not depend on `protein (PDV)`.
 
